@@ -21,5 +21,21 @@
     {
         "word": "she",
         "mean": "co ay"
+    },
+    {
+        "word": "install",
+        "mean": "cai dat"
+    },
+    {
+        "word": "get",
+        "mean": "lay"
+    },
+    {
+        "word": "workspace",
+        "mean": "khong gian lam viec"
+    },
+    {
+        "word": "can",
+        "mean": "co the"
     }
 ]

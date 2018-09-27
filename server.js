@@ -10,6 +10,6 @@ app.get("/", function(req, res) {
     console.log("hello");
 });
 
-app.get("/translate/en/:word", translate);
-app.get("/translate/fr/:word", translate);
+app.get("/translate/en-vi/:word", translate);
+app.get("/translate/fr-en/:word", translate);
 app.get("/translate", translate);

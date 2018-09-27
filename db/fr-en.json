@@ -1,0 +1,41 @@
+[{
+        "word": "moi",
+        "mean": "i"
+    },
+    {
+        "word": "vous",
+        "mean": "you"
+    },
+    {
+        "word": "nous",
+        "mean": "we"
+    },
+    {
+        "word": "les",
+        "mean": "the"
+    },
+    {
+        "word": "il",
+        "mean": "he"
+    },
+    {
+        "word": "elle",
+        "mean": "she"
+    },
+    {
+        "word": "installer",
+        "mean": "install"
+    },
+    {
+        "word": "obtenir",
+        "mean": "get"
+    },
+    {
+        "word": "espace de travail",
+        "mean": "workspace"
+    },
+    {
+        "word": "pouvez",
+        "mean": "can"
+    }
+]
