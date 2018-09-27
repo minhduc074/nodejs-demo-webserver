@@ -13,6 +13,7 @@ function trans(dir, word) {
         if (dir[i].word.toString() === word)
             return dir[i].mean;
     }
+	return "";
 }
 
 translate.get("/translate/en/:word", function(req, res) {
