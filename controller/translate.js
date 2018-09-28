@@ -7,50 +7,48 @@ var fr_en = JSON.parse(fs.readFileSync('./db/fr-en.json', 'utf8'));
 
 var translate = express.Router();
 
-function trans(dir, word) {
-    for (var i = 0; i < dir.length; i++) {
-        if (dir[i].word.toString().toLowerCase() === word.toLowerCase())
-            return dir[i].mean;
-    }
-    return "";
-}
+var translate_word = function trans(dir, word) {
+    return new Promise(function(resolve, reject) {
+        for (var i = 0; i < dir.length; i++) {
+            if (dir[i].word.toString().toLowerCase() === word.toLowerCase())
+                resolve(dir[i].mean);
+        }
+        reject("Not Found");
+    });
+};
 
 translate.get("/translate/en-vi/:word", function(req, res) {
     var word = req.params.word;
     console.log(word);
 
-    var ret = trans(en_vi, word);
-
-    if (ret === "") {
-        console.log("400");
-        res.writeHead(400, { 'Content-Type': 'text/json' });
-        var body = { "word": word, "mean": ret }
-        res.end(JSON.stringify(body));
-    } else {
+    translate_word(en_vi, word).then(function(ret) {
         console.log("200");
         res.writeHead(200, { 'Content-Type': 'text/json' });
         var body = { "word": word, "mean": ret }
         res.end(JSON.stringify(body));
-    }
+    }).catch(function(reason) {
+        console.log("400");
+        res.writeHead(400, { 'Content-Type': 'text/json' });
+        var body = { "word": word, "mean": reason }
+        res.end(JSON.stringify(body));
+    });
 });
 
 translate.get("/translate/fr-en/:word", function(req, res) {
     var word = req.params.word;
     console.log(word);
 
-    var ret = trans(fr_en, word);
-
-    if (ret === "") {
-        console.log("400");
-        res.writeHead(400, { 'Content-Type': 'text/json' });
-        var body = { "word": word, "mean": ret }
-        res.end(JSON.stringify(body));
-    } else {
+    translate_word(fr_en, word).then(function(ret) {
         console.log("200");
         res.writeHead(200, { 'Content-Type': 'text/json' });
         var body = { "word": word, "mean": ret }
         res.end(JSON.stringify(body));
-    }
+    }).catch(function(reason) {
+        console.log("400");
+        res.writeHead(400, { 'Content-Type': 'text/json' });
+        var body = { "word": word, "mean": reason }
+        res.end(JSON.stringify(body));
+    });
 });
 
 translate.get("/translate", function(req, res) {
