@@ -1,8 +1,12 @@
 var translate = require("./controller/translate.js");
 var express = require('express');
+var cors = require('cors');
 
 
 var app = express();
+
+app.use(cors());
+
 var http = require("http").createServer(app);
 http.listen(process.env.PORT || 3000, function() {
     console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
